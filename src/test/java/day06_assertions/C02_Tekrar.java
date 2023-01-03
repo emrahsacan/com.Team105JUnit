@@ -14,6 +14,7 @@ public class C02_Tekrar {
        Testler failed olsa da kodlar sorunsuz calistigi icin
        testler yesil tik olarak isaretlendi
      */
+
      int P1Yas=60;
      int P2yas=66;
      int P3yas=70;
@@ -23,5 +24,15 @@ public class C02_Tekrar {
         //P2'nin emekli olamayacağını test edin
 
         Assert.assertTrue(P2yas>65);
+    }
+
+    @Test
+    public void test02(){
+        Assert.assertFalse(P1Yas>65);
+    }
+
+    @Test
+    public void test03(){
+        Assert.assertFalse("Girilen yaş 65'ten küçük olmadığından emekli olabilir. ", P3yas>65);
     }
 }
