@@ -6,30 +6,29 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C02_JsAlerts {
-
+public class C02_Tekrar {
     // Gerekli ayarlamalari yapip
     // https://the-internet.herokuapp.com/javascript_alerts  adresine gidin
     // 3 test method'u olusturup her method'da bir JsAlert'e basin
     // Ilgili method'lari kullanin
-
     static WebDriver driver;
+
 
     @BeforeClass
     public static void setUp(){
-
         WebDriverManager.chromedriver().setup();
         driver= new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
     }
-
     @AfterClass
     public static void teardown() throws InterruptedException {
         Thread.sleep(3000);
@@ -37,59 +36,57 @@ public class C02_JsAlerts {
     }
 
     @Test
-    public void test01() throws InterruptedException {      //test methodları static olmaz
+    public void test01() throws InterruptedException {   //test methodları static olmaz
+
+        // https://the-internet.herokuapp.com/javascript_alerts  adresine gidin
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
-        // 1.alert'e tiklayalim
+
         driver.findElement(By.xpath("//*[text()='Click for JS Alert']")).click();
+
         // Alert'deki yazinin "I am a JS Alert" oldugunu test edelim
 
-        String actualAlertyazisi = driver.switchTo().alert().getText();
-        String expectedAlertYazisi="I am a JS Alert";
-        Thread.sleep(3000);
-        Assert.assertEquals(expectedAlertYazisi,actualAlertyazisi);
+       String actualAlertYazisi= driver.switchTo().alert().getText();
+       String  expectedAlertYazisi="I am a JS Alert";
+       Thread.sleep(3000);
 
-        // OK tusuna basip alert'i kapatalim
+        Assert.assertEquals(expectedAlertYazisi,actualAlertYazisi);
 
+
+        // OK tusuna basalım
         driver.switchTo().alert().accept();
     }
-
     @Test
     public void test02() throws InterruptedException {
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
         // 2.alert'e tiklayalim
         driver.findElement(By.xpath("//*[text()='Click for JS Confirm']")).click();
 
+
         // cancel'a basip, cikan sonuc yazisinin "You clicked: Cancel" oldugunu test edin
         Thread.sleep(3000);
         driver.switchTo().alert().dismiss();
 
-        String actualSonucYazisi=driver.findElement(By.xpath("//*[text()='You clicked: Cancel']"))
-                .getText();
-
-
+        String actualSonucYazisi=driver.findElement(By.xpath("//*[text()='You clicked: Cancel']")).getText();
         String expectedSonucYazisi="You clicked: Cancel";
 
         Assert.assertEquals(expectedSonucYazisi,actualSonucYazisi);
 
     }
-
     @Test
     public void test03() throws InterruptedException {
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
         // 3.alert'e tiklayalim
         driver.findElement(By.xpath("//*[text()='Click for JS Prompt']")).click();
-
-        // Cikan prompt ekranina "Abdullah" yazdiralim ve OK tusuna basarak alert'i kapatalim
-
+        // Cikan sonuc yazisinin Abdullah icerdigini test edelim
         driver.switchTo().alert().sendKeys("Abdullah");
         Thread.sleep(3000);
 
         driver.switchTo().alert().accept();
-        // Cikan sonuc yazisinin Abdullah icerdigini test edelim
-        String actualSonucYazisi=driver.findElement(By.xpath("//*[@id='result']"))
-                .getText();
 
-        String expectedKelime= "Abdullah";
+        // Cikan sonuc yazisinin Abdullah icerdigini test edelim
+
+        String actualSonucYazisi=driver.findElement(By.xpath("//*[@id='result']")).getText();
+        String expectedKelime="Abdullah";
 
         Assert.assertTrue(actualSonucYazisi.contains(expectedKelime));
 

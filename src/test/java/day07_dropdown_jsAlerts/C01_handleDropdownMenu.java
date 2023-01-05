@@ -41,7 +41,7 @@ public class C01_handleDropdownMenu {
         // amazon anasayfaya gidin
         // arama kutusu yanindaki dropdown menuden book secin
         // arama kutusuna java yazdirip aramayi yapin
-        // title'in java icerdigini test edin
+        // title'in Java icerdigini test edin
 
         driver.get("https://www.amazon.com");
 
