@@ -18,8 +18,8 @@ public class C05_FormDoldurma extends TestBase {
         // facebook.com sayfasina gidin
         driver.get("https://www.facebook.com");
 
-        // cookies'i kabul et
-        driver.findElement(By.xpath("//button[@title='Only allow essential cookies']")).click();
+        // cookies'i kabul et  --Bende cookies çıkmadığı için yoruma aldım
+       // driver.findElement(By.xpath("//button[@title='Only allow essential cookies']")).click();
         // yeni hesap olustur butonuna basin
         driver.findElement(By.xpath("//a[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']")).click();
 
