@@ -22,7 +22,9 @@ public class C02_FileDowloadTesti extends TestBase {
 
 
         // 3. Facebookd.png dosyasını indirelim
-        driver.findElement(By.xpath("//a[text()='Facebookd.png']")).click();
+        driver.findElement(By.xpath("//a[text()='Facebookd.png']")).click();  // bazen burada indirilecek dosya ismi sitede
+                                                                                         // değişiyor locaet'i tekrar düzenlemek gerekir
+
         ReusableMethods.bekle(5);
         // 4. Dosyanın başarıyla indirilip indirilmediğini test edelim
 
@@ -38,8 +40,9 @@ public class C02_FileDowloadTesti extends TestBase {
     }
     @Test
     public void test02(){
-        //Masaustunde Merhabajava.docx dosyasi olduğunutest edin
+        // Masaustunde Merhabajava.docx dosyasi oldugunu test edin
 
+        // dinamik dosya yolu olusturalim
         String dosyaYolu= System.getProperty("user.home")+ "\\OneDrive\\Masaüstü\\MerhabaJava.docx";     //"C:\Users\emrah\OneDrive\Masaüstü\MerhabaJava.docx"
 
         //Assert alalım
