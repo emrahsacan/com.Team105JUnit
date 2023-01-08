@@ -32,5 +32,7 @@ public class C01_FileInputStream {
         //Masaüstüne gitmek istersek
 
         String dinamikDosyaYolu= System.getProperty("user.home") + "\\Masaüstü\\MerhabaJava.docx\"";
+
+                         //OneDrive olan bilgisayarlarda buraya  \OneDrive\Masaüstü\MerhabaJava.docx yazmalıyız!!
     }
 }
