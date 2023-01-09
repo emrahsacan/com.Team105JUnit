@@ -46,7 +46,7 @@ public class C01_WebTables extends TestBase {
         //     Basta basliklar listesi olusturmustuk, onun size'ini alalim
         System.out.println("Sutun sayisi : " + basliklarListesi.size());
         //  8. Tablodaki 3.kolonu yazdirin
-        List<WebElement> ucuncuSutunDatalarListesi= driver.findElements(By.xpath("((//div[@class='rt-tr-group']))//div[1]/div[3]"));
+        List<WebElement> ucuncuSutunDatalarListesi= driver.findElements(By.xpath("(//div[@class='rt-tr-group'])//div[1]/div[3]"));
 
         for (WebElement eachElement: ucuncuSutunDatalarListesi
         ) {

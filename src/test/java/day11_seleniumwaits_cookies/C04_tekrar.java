@@ -36,20 +36,47 @@ public class C04_tekrar extends TestBase {
 
 
         //6. Web table’daki sutun sayisinin 13 olduğunu test edin
+        List<WebElement> ucuncuSatirSutunListesi=driver.findElements(By.xpath("//tbody/tr[3]/td"));
+        Assert.assertEquals(13,ucuncuSatirSutunListesi.size());
+
+
 
 
 
         //7. 5.sutunu yazdirin
 
+        List<WebElement> besinciSutunElementleri=driver.findElements(By.xpath("//tbody/tr/td[5]"));
 
+        System.out.println("=================================");
+
+
+        for (WebElement eachElement: besinciSutunElementleri
+             ) {
+            System.out.println(eachElement.getText());
+
+        }
 
 
         //8.Satir ve sutun sayisini parametre olarak alip,
         // hucredeki bilgiyi döndüren bir method olusturun
+        System.out.println("============================");
+
+        WebElement istenenDataElementi= getElement(3,5);
+        System.out.println(istenenDataElementi.getText());
+
+
 
      ReusableMethods.bekle(5);
     }
 
+    private WebElement getElement(int satir, int sutun) {
         //     //tbody/tr[5]/td[7]
+        String dinamikXpath="//tbody/tr["+satir+"]/td["+sutun+"]";
+
+        WebElement istenenElement=driver.findElement(By.xpath(dinamikXpath));
+
+        return istenenElement;
+    }
+
 }
 
