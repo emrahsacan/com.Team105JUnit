@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class C03_tekrar {
     @Test
@@ -31,10 +33,34 @@ public class C03_tekrar {
         Assert.assertEquals(expectedBaskent,actualBaskent);
 
         //		- Satir sayisini bulalim
+        System.out.println("Satır Sayisi : "+(workbook.getSheet("Sayfa1").getLastRowNum() +1));
+
         //		- Fiziki olarak kullanilan satir sayisini bulun
         //      Bunun icin Sayfa2 deki son satir indexi'ni ve fiziki kullanilan satir sayisini yazdiralim
+
+        System.out.println("2. sayfa Son satir indexi : " + workbook.getSheet("Sayfa2").getLastRowNum());
+
+        System.out.println("2. sayfa fiziki kullanılan satir sayisi : " + workbook.getSheet("Sayfa2").getPhysicalNumberOfRows());
+
         //		- Ingilizce Ulke isimleri ve baskentleri bir map olarak kaydedelim
         //  Ulke ismi ingilizce ==> key, geriye kalan 3 bilgi ise birlestirilerek value olsun
+        Map<String,String> ulkelerMap=new TreeMap<>();
+        int sonSatirIndexi= workbook.getSheet("Sayfa1").getLastRowNum();
+        String key="";
+        String value="";
+
+        for (int i = 0; i <= sonSatirIndexi; i++) {
+            key=workbook.getSheet("Sayfa1").getRow(i).getCell(0).toString();
+
+            value= workbook.getSheet("Sayfa1").getRow(i).getCell(1).toString() +", " +
+                    workbook.getSheet("Sayfa1").getRow(i).getCell(2).toString() +", " +
+                    workbook.getSheet("Sayfa1").getRow(i).getCell(3).toString();
+
+            ulkelerMap.put(key,value);
+
+        }
+        System.out.println(ulkelerMap);
+
 
     }
 }
